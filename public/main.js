@@ -17,7 +17,7 @@ var startSlideshow = function(url, md){
   var $source = $('#source');
   $source.show();
   $source.get(0).innerHTML = md;
-  history.pushState({}, '', 'http://'+location.host+'/'+url);
+  history.pushState({}, '', 'http://'+location.host+url);
   var slideshow = remark.create();
   resetUrlInput();
 };
