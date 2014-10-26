@@ -1,13 +1,46 @@
-function startSlideshow() {
-  var path = location.pathname;
-  if (path == '/') return;
-  path += '.md';
-  $.get(path, function(data, stat) {
-    $('#source').get(0).innerText = data;
-    var slideshow = remark.create();
+// Convert http://qiita.com/hoge/items/fuga -> /hoge/items/fuga
+var parseUrl = function (url) {
+  return url
+    .replace(/https?:\/\/qiita\.com/, '')
+    .replace(/\n|\s/g, '');
+};
+
+var loadMarkdown = function(url){
+  return $.Deferred(function(d){
+    $.get(url+'.md').done(function(data, stat) {
+      d.resolve(data);
+    });
+  });
+};
+
+var startSlideshow = function(url, md){
+  var $source = $('#source');
+  $source.show();
+  $source.get(0).innerHTML = md;
+  history.pushState({}, '', 'http://'+location.host+'/'+url);
+  var slideshow = remark.create();
+  resetUrlInput();
+};
+
+var loadAndShow = function(url){
+  console.log('fetching', url);
+  loadMarkdown(url).done(function(md){
+    startSlideshow(url, md);
+  });
+};
+
+var resetUrlInput = function(){
+  var $urlInput = $('.url');
+  $urlInput.on('keydown', function(ev){
+    if(ev.keyCode === 13) { // when user press enter
+      var url = parseUrl($urlInput.val());
+      loadAndShow(url);
+    }
   });
 }
 
-$(document).ready(function() {
-  startSlideshow();
+$(function() {
+  resetUrlInput();
+  if(location.pathname !== '/')
+    loadAndShow(location.pathname);
 });
