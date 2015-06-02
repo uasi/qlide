@@ -16,6 +16,7 @@ var loadMarkdown = function(url){
 var startSlideshow = function(url, md){
   var $source = $('#source');
   $source.show();
+  md = DOMPurify.sanitize(md);
   $source.get(0).innerHTML = md;
   history.pushState({}, '', 'http://'+location.host+url);
   var slideshow = remark.create();
@@ -27,6 +28,7 @@ var loadAndShow = function(url){
   loadMarkdown(url).done(function(md){
     startSlideshow(url, md);
   });
+  $('.main-container').hide();
 };
 
 var resetUrlInput = function(){
@@ -36,6 +38,11 @@ var resetUrlInput = function(){
       var url = parseUrl($urlInput.val());
       loadAndShow(url);
     }
+  });
+  var $go = $('.go');
+  $go.on('click', function(){
+    var url = parseUrl($urlInput.val());
+    loadAndShow(url);
   });
 }
 
