@@ -4,7 +4,7 @@
     <title>Qlide</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <style type="text/css">
-      @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:200,400);
       @import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
       @import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
 
@@ -15,14 +15,27 @@
       }
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
     </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript" src="http://gnab.github.io/remark/downloads/remark-latest.min.js"></script>
-    <script type="text/javascript" src="/main.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
   </head>
   <body>
-    URL: <input class='url'></input>
-    <div class='slide-container'>
-      <textarea id="source" style='display:none;'></textarea>
+    <div class="main-container">
+          <div id="main">
+            <section>
+            <h1>Qlide</h1>
+            <p>Turn a Qiita article into a beautiful slide.</p>
+            <div class="url-input-group input-group input-group-lg">
+              <input type="text" class="form-control url" placeholder="http://qiita.com/uasi/items/...">
+            </div>
+            </section>
+          </div>
+    </div>
+    <div class="slide-container">
+      <textarea id="source" style="display:none;"></textarea>
     </div>
   </body>
 </html>

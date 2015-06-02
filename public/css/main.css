@@ -1,0 +1,39 @@
+html,
+body {
+    background-color: #59bb0c;
+    width: 100%;
+    height: 100%;
+}
+
+.main-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#main {
+    margin: 100px auto 0;
+    text-align: center;
+    width: 700px;
+}
+
+#main h1 {
+    color: white;
+    font-size: 7em;
+    font-family: 'Yanone Kaffeesatz';
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+
+#main p {
+  color: white;
+  font-size: 3em;
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: 200;
+  margin: 1em;
+}
+
+.url-input-group {
+  width: 100%;
+}
